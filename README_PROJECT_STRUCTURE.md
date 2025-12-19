@@ -24,6 +24,17 @@
    - Java/Python/XML 支持模块
    - 模块命名约定
 
+4. **[DIRECTORY_TREE.md](./DIRECTORY_TREE.md)** - 可视化目录树
+   - 完整的目录层次结构
+   - 模块数量统计
+   - 命名约定说明
+
+5. **[STARTUP_FLOW_ANALYSIS.md](./STARTUP_FLOW_ANALYSIS.md)** - 启动流程分析
+   - 完整的启动流程详解
+   - 各阶段时序图和关键组件
+   - 性能优化机制
+   - 启动配置和问题诊断
+
 ## 🎯 快速了解
 
 ### 项目规模
