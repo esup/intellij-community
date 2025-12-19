@@ -1,0 +1,138 @@
+<!-- Example plugin.xml configuration for MES Client -->
+<!-- This file should be placed in src/main/resources/META-INF/plugin.xml -->
+
+<idea-plugin>
+    <!-- Plugin ID - must be unique -->
+    <id>com.example.mes.client</id>
+    
+    <!-- Plugin name displayed in IDE -->
+    <name>MES Client</name>
+    
+    <!-- Plugin version -->
+    <version>1.0.0</version>
+    
+    <!-- Vendor information -->
+    <vendor email="support@example.com" url="https://www.example.com">Example Company</vendor>
+    
+    <!-- Plugin description -->
+    <description><![CDATA[
+        Manufacturing Execution System (MES) Client based on IntelliJ Platform.
+        
+        Features:
+        - Production order monitoring
+        - Quality control management
+        - Inventory tracking
+        - Real-time production reports
+        - Integration with MES backend systems
+    ]]></description>
+    
+    <!-- Change notes -->
+    <change-notes><![CDATA[
+        <h3>Version 1.0.0</h3>
+        <ul>
+            <li>Initial release</li>
+            <li>Basic production monitoring</li>
+            <li>Quality control interface</li>
+            <li>Inventory management</li>
+        </ul>
+    ]]></change-notes>
+    
+    <!-- Minimum IDE version required -->
+    <idea-version since-build="241.0"/>
+    
+    <!-- Dependencies on IntelliJ Platform modules -->
+    <depends>com.intellij.modules.platform</depends>
+    
+    <!-- Extension points -->
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Register the main MES tool window -->
+        <toolWindow id="MES Dashboard"
+                    factoryClass="com.example.mes.client.ui.MESMainWindowFactory"
+                    anchor="left"
+                    icon="AllIcons.Nodes.Controller"
+                    canCloseContents="false"/>
+        
+        <!-- Register application starter -->
+        <applicationStarter implementation="com.example.mes.client.MESClientStarter"/>
+        
+        <!-- Application service for MES connection management -->
+        <applicationService serviceImplementation="com.example.mes.client.services.MESConnectionService"/>
+        
+        <!-- Application service for MES data cache -->
+        <applicationService serviceImplementation="com.example.mes.client.services.MESDataCacheService"/>
+        
+        <!-- Project service for MES project settings -->
+        <projectService serviceImplementation="com.example.mes.client.services.MESProjectSettingsService"/>
+        
+        <!-- Notification group for MES alerts -->
+        <notificationGroup id="MES Notifications" 
+                          displayType="BALLOON"
+                          isLogByDefault="true"/>
+    </extensions>
+    
+    <!-- Application listeners -->
+    <applicationListeners>
+        <!-- Listen to application lifecycle events -->
+        <listener class="com.example.mes.client.listeners.MESApplicationListener"
+                  topic="com.intellij.openapi.application.ApplicationActivationListener"/>
+    </applicationListeners>
+    
+    <!-- Project listeners -->
+    <projectListeners>
+        <!-- Listen to project lifecycle events -->
+        <listener class="com.example.mes.client.listeners.MESProjectListener"
+                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
+    </projectListeners>
+    
+    <!-- Actions -->
+    <actions>
+        <!-- Main menu group -->
+        <group id="MES.MainMenu" text="MES" description="MES Client Actions">
+            <add-to-group group-id="MainMenu" anchor="last"/>
+            
+            <action id="MES.Connect"
+                    class="com.example.mes.client.actions.ConnectToServerAction"
+                    text="连接到服务器"
+                    description="Connect to MES server"
+                    icon="AllIcons.Actions.Execute"/>
+            
+            <action id="MES.Disconnect"
+                    class="com.example.mes.client.actions.DisconnectFromServerAction"
+                    text="断开连接"
+                    description="Disconnect from MES server"
+                    icon="AllIcons.Actions.Suspend"/>
+            
+            <separator/>
+            
+            <action id="MES.RefreshData"
+                    class="com.example.mes.client.actions.RefreshDataAction"
+                    text="刷新数据"
+                    description="Refresh MES data"
+                    icon="AllIcons.Actions.Refresh"
+                    use-shortcut-of="Refresh"/>
+            
+            <separator/>
+            
+            <action id="MES.Settings"
+                    class="com.example.mes.client.actions.OpenSettingsAction"
+                    text="设置"
+                    description="Open MES settings"
+                    icon="AllIcons.General.Settings"/>
+        </group>
+        
+        <!-- Toolbar actions -->
+        <group id="MES.Toolbar" text="MES Toolbar">
+            <action id="MES.NewOrder"
+                    class="com.example.mes.client.actions.NewProductionOrderAction"
+                    text="新建订单"
+                    description="Create new production order"
+                    icon="AllIcons.General.Add"/>
+            
+            <action id="MES.ExportReport"
+                    class="com.example.mes.client.actions.ExportReportAction"
+                    text="导出报表"
+                    description="Export production report"
+                    icon="AllIcons.ToolbarDecorator.Export"/>
+        </group>
+    </actions>
+</idea-plugin>
