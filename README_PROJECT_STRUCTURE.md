@@ -19,8 +19,8 @@
    - 设计模式和最佳实践
 
 3. **[MODULE_CATALOG.md](./MODULE_CATALOG.md)** - 详细模块清单
-   - Platform 核心模块列表（~160个）
-   - Plugins 插件模块列表（~93个）
+   - Platform 核心模块列表（~161个）
+   - Plugins 插件模块列表（~94个）
    - Java/Python/XML 支持模块
    - 模块命名约定
 
@@ -34,9 +34,9 @@
   - Kotlin: ~74,343 个
   - Python: ~13,928 个
 - **主要目录**: 
-  - plugins/ (833MB, 93个插件)
+  - plugins/ (833MB, 94个插件)
   - java/ (326MB)
-  - platform/ (319MB, 160个模块)
+  - platform/ (319MB, 161个模块)
   - python/ (246MB)
 
 ### 核心架构
@@ -188,8 +188,8 @@ bazel query "//platform/editor/..."
 ## 📊 统计信息
 
 ### 代码量分布
-- Platform: 319MB (~160 modules)
-- Plugins: 833MB (~93 plugins)
+- Platform: 319MB (~161 modules)
+- Plugins: 833MB (~94 plugins)
 - Java Support: 326MB
 - Python Support: 246MB
 - XML Support: 76MB
@@ -218,7 +218,7 @@ bazel query "//platform/editor/..."
 
 1. 阅读 [CONTRIBUTING.md](./CONTRIBUTING.md) 了解贡献指南
 2. 浏览 [platform/docs/](./platform/docs/) 查看技术文档
-3. 查看 [.idea/runConfigurations/](./\.idea/runConfigurations/) 了解运行配置
+3. 查看 [.idea/runConfigurations/](./.idea/runConfigurations/) 了解运行配置
 4. 加入 JetBrains Platform Slack 社区
 
 ---

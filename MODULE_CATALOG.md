@@ -15,7 +15,7 @@
 
 ## Platform 核心模块
 
-Platform 目录包含约 160 个子模块，是 IntelliJ Platform 的核心基础设施。
+Platform 目录包含约 161 个子模块，是 IntelliJ Platform 的核心基础设施。
 
 ### 核心 API 和实现
 
@@ -277,7 +277,7 @@ Platform 目录包含约 160 个子模块，是 IntelliJ Platform 的核心基�
 
 ## Plugins 插件模块
 
-Plugins 目录包含约 93 个插件模块。
+Plugins 目录包含约 94 个插件模块。
 
 ### 版本控制系统插件
 

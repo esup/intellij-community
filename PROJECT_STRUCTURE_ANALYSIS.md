@@ -20,16 +20,16 @@
 
 | 目录 | 大小 | 说明 |
 |------|------|------|
-| `plugins/` | 833MB | IDE 插件模块集合（~93个插件目录） |
+| `plugins/` | 833MB | IDE 插件模块集合（~94个插件目录） |
 | `java/` | 326MB | Java 语言支持核心实现 |
-| `platform/` | 319MB | IntelliJ Platform 核心框架（~160个子模块） |
+| `platform/` | 319MB | IntelliJ Platform 核心框架（~161个子模块） |
 | `python/` | 246MB | Python 语言支持实现 |
 | `xml/` | 76MB | XML 语言支持 |
 | `jvm/` | 4.4MB | JVM 分析工具 |
 
 ### 平台核心 (platform/)
 
-包含 IntelliJ Platform 的核心功能模块，约 160 个子模块，主要包括：
+包含 IntelliJ Platform 的核心功能模块，约 161 个子模块，主要包括：
 
 #### 核心 API 和实现
 - `core-api/` - 平台核心 API
@@ -96,7 +96,7 @@
 
 ### 插件目录 (plugins/)
 
-约 93 个插件模块，覆盖各种编程语言、框架和工具：
+约 94 个插件模块，覆盖各种编程语言、框架和工具：
 
 #### 版本控制系统
 - `git4idea/` - Git 集成
