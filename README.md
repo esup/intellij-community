@@ -50,21 +50,77 @@ Alternatively, follow the steps below in a terminal:
 > - Cloning in IntelliJ IDEA also supports creating shallow clone.
 
 #### Get Android Modules
-IntelliJ IDEA requires additional Android modules from separate Git repositories.
 
-Run the following script from project root `<IDEA_HOME>` to get the required modules:
+##### Why Android Modules Are Required
+IntelliJ IDEA requires additional Android modules from a separate Git repository to provide full Android development support. These modules are maintained separately due to their specific dependencies, release cycles, and licensing requirements that differ from the core IntelliJ Platform.
+
+##### What the Android Modules Provide
+The Android modules include essential components for Android application development:
+- **Android Core** (`intellij.android.core`) - Core Android plugin functionality and infrastructure
+- **Android Plugin** (`intellij.android.plugin`) - Main Android development plugin
+- **Layout Library** (`intellij.android.layoutlib`) - Android layout rendering engine for UI preview
+- **Compose Designer** (`intellij.android.compose-designer`) - Jetpack Compose visual designer
+- **Compose IDE Plugin** (`intellij.android.compose-ide-plugin`) - IDE integration for Jetpack Compose
+- **Design Plugin** (`intellij.android.design-plugin`) - Android UI designer and layout editor
+- **Navigator** (`intellij.android.navigator`) - Android project structure navigator
+
+Without these modules, you won't be able to build the full IntelliJ IDEA with Android development capabilities.
+
+##### How to Get Android Modules
+Run the following script from project root `<IDEA_HOME>` to clone the Android modules:
 - Linux/macOS: `./getPlugins.sh`
 - Windows: `getPlugins.bat`
 
+These scripts will clone the Android repository into the `android` directory within your project.
+
+For faster download (if you don't need the complete history):
+- Linux/macOS: `./getPlugins.sh --shallow`
+- Windows: `getPlugins.bat --shallow`
+
 > [!IMPORTANT]
 >
->  Always `git checkout` the `intellij-community` and `android` Git repositories to the same branches/tags.
+>  Always `git checkout` the `intellij-community` and `android` Git repositories to the same branches/tags to ensure compatibility.
 
 
 ---
 ## Building IntelliJ IDEA
 These instructions will help you build IntelliJ IDEA from source code, which is the basis for IntelliJ Platform development.
 IntelliJ IDEA '**2023.2**' or newer is required.
+
+### Build and Compilation Workflow Overview
+
+The IntelliJ IDEA build process follows these main stages:
+
+1. **Source Preparation**
+   - Clone the `intellij-community` repository
+   - Clone Android modules (if building with Android support)
+   - Ensure all repositories are on matching branches/tags
+
+2. **Environment Setup**
+   - Configure JDK (JetBrains Runtime 21 without JCEF)
+   - Set up Maven repository path
+   - Allocate sufficient memory (minimum 8GB RAM)
+
+3. **Dependency Resolution**
+   - Download required libraries and dependencies
+   - Resolve Maven dependencies
+   - Set up Kotlin plugin and other required plugins
+
+4. **Compilation**
+   - Compile platform modules (core IntelliJ Platform code)
+   - Compile plugins (including Android if present)
+   - Generate resources and process metadata
+
+5. **Assembly**
+   - Package compiled classes into JAR files
+   - Create application distribution layout
+   - Generate launcher scripts and configuration files
+
+6. **Installer Creation (Optional)**
+   - Build platform-specific installers (Windows .exe, macOS .dmg, Linux .tar.gz)
+   - Sign and notarize packages (for production builds)
+
+The entire build process is orchestrated by the build scripts located in the `build/` and `platform/build-scripts/` directories. The build system supports both development builds (fast, incremental) and production builds (complete, with all optimizations).
 
 ### Opening the IntelliJ IDEA Source Code in the IDE
 Using the latest IntelliJ IDEA, click '**File | Open**', select the `<IDEA_HOME>` directory.
